@@ -289,3 +289,116 @@ GO
 
 
 ````
+
+# API Development usifg ASP.NET Core
+
+1. WebApplicationBuilder class
+	- Configure the Hosting Enviroment
+		- Kestral
+		- IIS
+		- Docker
+	- Build Dependencies Container for Registering Dependencies
+		- DataAccess
+			- EF Core, any other Data Access Provider
+		- Security
+			- AUthentication
+				- UserName and PAssword
+				- Azure Active Directory (AAD)
+			- AUthorization
+				- JSON Web Token (JWT)
+				- Email
+				- OTP
+		- Session
+			- USed in case of MVC
+		- Caching
+			- Creating a storage for High-Availability of Frequently required Data
+				- InMemoryCache (Default)
+				- Distributed Cache
+					- USed from Cloud
+		- CORS
+			- Cross Origin Resporce Sharing
+		- Custom Services
+			- Our own Business Layers
+		- Third Party Services
+			- Swagger
+			- RabbitMQ
+				- MassTransit
+		- IServiceCollection
+			- The 'contract' interface taht is used to Register Dependency in the ASP.NET Core Dependency Container
+			- Microsoft.AspNetCore.DependencyExtension namespace
+		- The 'ServiceDescriptor' class
+			- THis class is used to decide how the dependency object will be register
+			- AddSingleton()	
+				- THe Dependency will be live forever the life of the application
+			- AddScopped()
+				- The depedneny will be live only for a session
+					- From Login-to-Logout
+			- AddTransient()
+				- The dependeny wll be live only for a request
+	- THe 'Configuration' property of the WebAPplicationBuilder class
+		- Of the type IConfiguration which is implemented by 'ConfigurationManager' class. 
+		- THis is used to read 'appsettings.json'
+	- Middleware REgistration
+		- Objects used in Http Request and Response
+		- HTTP Pipeline aka HttpContext
+			- Decides the way the Http request will be executed on Server
+		- They may use some objects from Services
+			- Authentication and Authorization
+			- Session
+			- CORS
+			- Exceptions
+			- HttpsRedirection
+			- Routing
+			- Custom Middlewares
+			- StaticFiles
+		- IMiddlewaer
+			- USed to create a Middleware Instance
+		- IApplicationBuilder
+			- USed to Register the Midleware in HTTP Pipeline
+
+# Api Programming Model
+	- 'ControllerBase' class, the abstrct base class for Api Controllers
+		- Load the COntroller class
+		- Load all dependencies in COntroller aka Injecting Dependencies
+		- Load all Filters (if Applied) on Controller
+		- Read the HTTP 'RequestType', Http Get, Post, Put, and Delete
+			- Map the Request Type to Correspongin Action Method in Controller class
+		- Execute Action Method
+			- Validate the Received Data from Post and Put Request
+	- The ApiControllerAttribute
+		- THis is used to Map the Received Data from Http Body for POST and PUT request to 'CLR Object' aka 'ENtity Object' aka 'Model Object'
+		- Use the ModelBiders aka Parameter Binders 
+			- USed to accept data in various form posted by the client for POST and PUT Request
+				- FromBody: Data will be read from Http Body
+				- FromQuery: Data will be passed as QUery String
+					- QueryString: Portion of the URL after Question Mark in NAme=Value pair
+						- https://localhost:6666/api/Department?DeptNo=10&DeptName=
+				- FromRoute
+					- Data will be read from Route
+				- FromForm
+					- Data from FormModel of Html 5
+https://www.webnethelper.com/2019/12/using-model-binders-in-aspnet-core.html
+
+	- Pratices
+		- Make sure that the Response is properly decorated as per the reuirements
+			- e.g.
+				- Instead of Came-Casing for result use the PAscal casing
+```` csharp
+// Accept Request for API Controllers
+builder.Services.AddControllers()
+        .AddJsonOptions(options=> {
+            // suressing the Camel-Casing
+            options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        });
+````
+		- Use the Validations
+			- ModelState property of the ControllerBase class of the type ModelStateDictionary is used to validate the model in Post and Put Request
+			- This works with DataAnnotations
+				- RequiedAttribute(), COmpareAttribute(), RegExAttribute() etc.
+			- Custom Validator
+				- The class derived from 'Validationttribute' class
+			- Domain Specific aka LOgic BAsed Validators
+	
+		- If there is exception, then make sure that it is hadled and responded to client with proper error messages
+			- Note: MAke sure that do not respond DB error
+		- If the API is used for Search then manage method and its parameters correctly  
