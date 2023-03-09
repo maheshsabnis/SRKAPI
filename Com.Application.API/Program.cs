@@ -1,3 +1,4 @@
+using Com.Application.API.CustomMiddlewares;
 using Com.Application.DataAccess.Models;
 using Com.Application.Entities;
 using Com.Application.Services;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CompanyContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnStr"));
 });
+
 
 
 
@@ -41,6 +43,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// The Custom Middleware
+app.UseCustomException();
+
 
 // 3. Map the Incomming request to API Controller
 app.MapControllers();

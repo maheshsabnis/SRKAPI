@@ -15,4 +15,21 @@
 					- Key: is DeptName
 					- Value: is EMployees for DeptName
 		}
+
 ````
+# Date 09-March-2023
+(Note: USe EF COre to Manage Db Operations)
+1. Create a Custom Middleware that will perform the following
+	- Log Each Request into the Database by creating follwoing table in database
+		- LogId: int Identity Key
+		- RequestDate: Date
+		- RequestPath : string
+			- The Url Requested
+		- RequestType: string
+			- Get/Post/Put/Delete
+2. Enhance the ErrorHandlerMiddleware class to Log the Exception in Database by creating Table witl COlumns as follows
+	- ErrorLOgId: int identity
+	- ErrorDateTime: DateTime
+	- ErrorMessage: String
+	- RequestPath: string
+	- RequestType: string

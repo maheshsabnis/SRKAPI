@@ -401,4 +401,14 @@ builder.Services.AddControllers()
 	
 		- If there is exception, then make sure that it is hadled and responded to client with proper error messages
 			- Note: MAke sure that do not respond DB error
-		- If the API is used for Search then manage method and its parameters correctly  
+		- If the API is used for Search then manage method and its parameters correctly
+		
+# ASP.NET Core Custom Middlewares
+	- Class that is costructor Injected using 'RequestDelegate' delegate
+		- THis delegate accepts 'HttpContext' as input parameter
+	- THis class will have a public 'InvokeAsync()' (OR Invoke()) that accepts 'HttpContext' as input parameter
+		- Write all logic for Middleware in this method
+
+	- Create a class that will have an 'Extension' method for 'IApplicationBuilder' 
+		- USe th 'UseMiddleware<T>()' extension method of 'IApplicationBuilder' interface  to register T class as Custom Middleware in the Pipeline
+			- THe 'T' is class that is constructor injected with 'RequestDelegate'

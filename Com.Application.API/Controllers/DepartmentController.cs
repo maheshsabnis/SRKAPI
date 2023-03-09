@@ -47,20 +47,29 @@ namespace Com.Application.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Department department)
         {
-            if (ModelState.IsValid)
-            {
-                if (!IsDeptNameExist(department.DeptName))
+            //try
+            //{
+                if (ModelState.IsValid)
                 {
-                    var response = await deptServ.CreateAsync(department);
-                    return Ok(response);
+
+                    if (!IsDeptNameExist(department.DeptName))
+                    {
+                        var response = await deptServ.CreateAsync(department);
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        //return Conflict($"The DeptName : {department.DeptName} is already exist");
+                        throw new Exception($"The DeptName : {department.DeptName} is already exist");
+                    }
+
                 }
-                else
-                {
-                    return Conflict($"The DeptName : {department.DeptName} is already exist");
-                }
-               
-            }
-            return BadRequest(ModelState);
+                return BadRequest(ModelState);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
            
         }
 

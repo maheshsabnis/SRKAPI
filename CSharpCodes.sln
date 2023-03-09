@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_Interfaces", "CS_Interfa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6540C495-689E-410F-8F67-93944BE8CFF9}"
 	ProjectSection(SolutionItems) = preProject
+		Assignments.md = Assignments.md
 		..\..\Users\acer\OneDrive\New_Lab_Documents\CSharp\CS_Async_Delegate.pdf = ..\..\Users\acer\OneDrive\New_Lab_Documents\CSharp\CS_Async_Delegate.pdf
 		..\..\Users\acer\OneDrive\New_Lab_Documents\CSharp\Generics_Lab.pdf = ..\..\Users\acer\OneDrive\New_Lab_Documents\CSharp\Generics_Lab.pdf
 		..\..\Coditas\NetEltp\LINQ_HOL.pdf = ..\..\Coditas\NetEltp\LINQ_HOL.pdf
@@ -21,13 +22,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_EF_DbFirst", "CS_EF_DbFi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIApps", "APIApps", "{3FA7AE28-ACA0-4222-853C-EB6B12707F05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Application.DataAccess", "Com.Application.DataAccess\Com.Application.DataAccess.csproj", "{D98B6DBC-6AF5-4540-B1C2-E4DABC43A5F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Application.DataAccess", "Com.Application.DataAccess\Com.Application.DataAccess.csproj", "{D98B6DBC-6AF5-4540-B1C2-E4DABC43A5F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Application.Entities", "Com.Application.Entities\Com.Application.Entities.csproj", "{E1F94B7C-828F-4819-A99B-1D429802F2F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Application.Entities", "Com.Application.Entities\Com.Application.Entities.csproj", "{E1F94B7C-828F-4819-A99B-1D429802F2F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Application.Services", "Com.Application.Services\Com.Application.Services.csproj", "{29F7414E-8CF2-4566-923B-1BB52F5871BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Application.Services", "Com.Application.Services\Com.Application.Services.csproj", "{29F7414E-8CF2-4566-923B-1BB52F5871BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Com.Application.API", "Com.Application.API\Com.Application.API.csproj", "{7920A0B8-8103-4883-BC6F-ABEF60F21D8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Com.Application.API", "Com.Application.API\Com.Application.API.csproj", "{7920A0B8-8103-4883-BC6F-ABEF60F21D8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_Extension", "CS_Extension\CS_Extension.csproj", "{2194E8A2-D0FE-4172-9EA8-A5569CC1C052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +70,10 @@ Global
 		{7920A0B8-8103-4883-BC6F-ABEF60F21D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7920A0B8-8103-4883-BC6F-ABEF60F21D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7920A0B8-8103-4883-BC6F-ABEF60F21D8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2194E8A2-D0FE-4172-9EA8-A5569CC1C052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2194E8A2-D0FE-4172-9EA8-A5569CC1C052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2194E8A2-D0FE-4172-9EA8-A5569CC1C052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2194E8A2-D0FE-4172-9EA8-A5569CC1C052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
