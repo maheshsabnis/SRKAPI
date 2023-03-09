@@ -14,7 +14,7 @@ builder.Services.AddDbContext<CompanyContext>(options => {
 
 
 
-
+ 
 // Accept Request for API Controllers
 builder.Services.AddControllers()
         .AddJsonOptions(options=> {
