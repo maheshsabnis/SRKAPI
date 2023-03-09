@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="./Scripts/jquery-3.6.3.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#btn").on('click', function () {
+                $.ajax({
+                    url: 'https://localhost:7286/api/Department',
+                    method: 'GET'
+                }).done(function (resp) {
+                    alert(`Response = ${JSON.stringify(resp)}`);
+                }).fail(function (err) {
+                    alert(`Error = ${err}`);
+                }); 
+            });
+
+        });
+    </script>
+</head>
+<body>
+ <input type="button" id="btn" value="Get Data"/>
+</body>
+</html>

@@ -32,6 +32,8 @@ namespace Com.Application.API.CustomMiddlewares
             }
             catch (Exception ex)
             {
+
+                
                  // if Error Occures the Handler it and generate response
                  // 1. Set the Status code for response
                  ctx.Response.StatusCode = 500;

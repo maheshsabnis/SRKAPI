@@ -12,8 +12,15 @@ builder.Services.AddDbContext<CompanyContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnStr"));
 });
 
-
-
+// Add CORS Service
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CORS", policy =>
+    {
+        // All Web Clients are able to Access the API
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
  
 // Accept Request for API Controllers
 builder.Services.AddControllers()
@@ -41,6 +48,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// COnfigure CORS Middleware
+app.UseCors("CORS");
 
 app.UseAuthorization();
 

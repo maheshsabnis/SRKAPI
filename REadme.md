@@ -412,3 +412,27 @@ builder.Services.AddControllers()
 	- Create a class that will have an 'Extension' method for 'IApplicationBuilder' 
 		- USe th 'UseMiddleware<T>()' extension method of 'IApplicationBuilder' interface  to register T class as Custom Middleware in the Pipeline
 			- THe 'T' is class that is constructor injected with 'RequestDelegate'
+- The Cross-Origin-Resource-Sharing (CORS) Service and Middleware
+	- Service
+		- Create the Registration of Allowed Domains, Allowed Headers, and Allowed Methods
+		- AddCors("CORS_POLiCY-NAME", CorsOptions) method
+			- CorsOptions	
+				- AllowAnyOrigin(),*
+				- AllowAnyHeader(),*
+				- AllowAnyMethod(),*
+				- WithOrigin(), WithMethod(), WithHeader()
+	- Middleware
+		- UseCors("CORS_POLiCY-NAME")
+
+- FIles with API
+	- IFromFile 
+		- Interface that represents the File Uploaded in HttpRequest Object
+		- Properties
+			- Name
+			- Size
+		- ContentDescription
+			- Describe file for
+				- FullName
+				- Size in bytes
+	- USe the 'FileStream' class
+		- File
