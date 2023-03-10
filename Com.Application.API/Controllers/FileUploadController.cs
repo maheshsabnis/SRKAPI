@@ -11,6 +11,7 @@ namespace Com.Application.API.Controllers
         [HttpPost("file/upload")]
         public async Task<IActionResult> Upload([FromForm] IFormFile file)
         {
+             
             try
             {
 

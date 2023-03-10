@@ -436,3 +436,38 @@ builder.Services.AddControllers()
 				- Size in bytes
 	- USe the 'FileStream' class
 		- File
+
+# ASP.NET Core Security for APIs
+	- Microsoft.AspNetCore.Identity
+		- IdentityUser
+			- CLass that is used to sore User's Informtion
+		- IdentityRole
+			- Class taht is used to store Role's Infromation
+		- UserManager<IdentityUser>
+			- Class used to Manage Users
+				- Create
+				- Update Password
+				- Assign Role To User
+		- RoleManager<IdentityRole>
+			- Class used to Manage Roles
+				- Create Role
+				- Managing Role
+		- SignInManager<IdentityUser>
+			- Manage the User SIgnIn based on UserName and Password
+	- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+		- Depends on 'Microsoft.EntityFrameworkCore'
+		- IdentityDbContext
+			- USes 'Code-First' Approach to Create 'AspNet Identity' Database on Database Server
+			- IdentityDbContext<IdentityUser, IdentityRole, IdentityClaim, IdentityToken>
+				- Tables Generated as 
+					- AspNetUsers ----- Mapped To ---- IdentityUser
+					- AspNetRoles ----- Mapped To ---- IdentityRole
+				- AspNetUerRoles
+					- User and Role One-to-One Mapped Table
+						- Maps AspNetUsers -- To -- AspNetRoles
+		- We need follwong packages to use SQL Server with Code-First
+			- Microsoft.EntityFrameworkCore.SqlServer
+			- Microsoft.EntityFrameworkCore.Design
+			- Microsoft.EntityFrameworkCore.Tools
+			- Microsoft.EntityFrameworkCore.Relational
+	- Apply the [Authorize] Attribute on the controller class 

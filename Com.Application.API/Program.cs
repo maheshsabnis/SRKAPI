@@ -1,7 +1,10 @@
 using Com.Application.API.CustomMiddlewares;
+using Com.Application.API.Models;
+using Com.Application.API.Service;
 using Com.Application.DataAccess.Models;
 using Com.Application.Entities;
 using Com.Application.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +14,25 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CompanyContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnStr"));
 });
+
+// REgister the SrcSecurityDbContext in DI
+builder.Services.AddDbContext<SrkSecurityDbContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SrkSecurityConnStr"));
+});
+
+
+
+// Register the Identity Service
+
+// THis will internally REgister following classed in DI Container
+// 1. UserManager<IdentityUser>
+// 2. RoleManager<IdentityRole>
+// 3. SignInManager<IdentityUser>
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    // Use the EF to Perform Read/Write OPerations for Users and Roles
+    .AddEntityFrameworkStores<SrkSecurityDbContext>();
+
+
 
 // Add CORS Service
 builder.Services.AddCors(options =>
@@ -37,6 +59,10 @@ builder.Services.AddSwaggerGen();
                         // INterface                , Class Implementing interface
 builder.Services.AddScoped<IDbAccess<Department,int>, DepartmentDbAccess>();
 
+// REgister the AuthenticationService in DI
+
+builder.Services.AddScoped<AuthenticationService>();
+
 
 var app = builder.Build();
 // 2. Configura Middlewares
@@ -51,7 +77,9 @@ app.UseHttpsRedirection();
 
 // COnfigure CORS Middleware
 app.UseCors("CORS");
-
+// Maintain the state of the User Authentication
+// on the Server
+app.UseAuthentication();
 app.UseAuthorization();
 
 // The Custom Middleware

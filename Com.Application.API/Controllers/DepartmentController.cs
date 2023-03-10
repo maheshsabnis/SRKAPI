@@ -2,11 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Com.Application.Entities;
 using Com.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Com.Application.API.Controllers
 {
+
     [Route("api/[controller]")]
-   [ApiController]
+    [Authorize] // Secure the Controller
+    [ApiController]
     public class DepartmentController : ControllerBase
     {
         // 1. Define the Service Depednency for Department Data Access
