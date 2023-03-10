@@ -33,3 +33,13 @@
 	- ErrorMessage: String
 	- RequestPath: string
 	- RequestType: string
+
+# Day 3
+
+1. When the Application Starts at first time Create an 'Administrator' role and 'admin@myapp.com' user with password as 'P@ssw0rd_'
+2. Assign 'Administrator' role to 'admin@myapp.com' user, when the app is started for the first time 	
+3. Make sure that the user can login only when a role is assigned to user
+	- Make ure that role can be assigned to user only by 'Administrator' role
+	- Role can be created only by 'Administrator' role
+
+ HINT: https://www.webnethelper.com/2022/03/aspnet-core-6-using-role-based-security.html

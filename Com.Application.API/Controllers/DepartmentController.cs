@@ -8,7 +8,7 @@ namespace Com.Application.API.Controllers
 {
 
     [Route("api/[controller]")]
-    [Authorize] // Secure the Controller
+   // [Authorize] // Secure the Controller
     [ApiController]
     public class DepartmentController : ControllerBase
     {
@@ -27,6 +27,9 @@ namespace Com.Application.API.Controllers
         /// https://localhost:[PORT]/api/Department
         /// </summary>
         /// <returns></returns>
+        /// 
+        //[Authorize(Roles = "Manager,Clerk,Operator")]
+        [Authorize(Policy = "ReadPolicy")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -40,13 +43,17 @@ namespace Com.Application.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// 
+        // [Authorize(Roles = "Manager,Clerk,Operator")]
+        [Authorize(Policy = "ReadPolicy")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var response = await deptServ.GetAsync(id);
             return Ok(response);
         }
-
+        // [Authorize(Roles = "Manager,Clerk")]
+        [Authorize(Policy = "WritePolicy")]
         [HttpPost]
         public async Task<IActionResult> Post(Department department)
         {
@@ -75,14 +82,16 @@ namespace Com.Application.API.Controllers
             //}
            
         }
-
+        // [Authorize(Roles = "Manager,Clerk")]
+        [Authorize(Policy = "WritePolicy")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, Department department)
         {
             var response = await deptServ.UpdateAsync(id,department);
             return Ok(response);
         }
-
+        //[Authorize(Roles = "Manager")]
+        [Authorize(Policy = "DeletePolicy")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

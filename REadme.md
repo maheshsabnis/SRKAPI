@@ -471,3 +471,8 @@ builder.Services.AddControllers()
 			- Microsoft.EntityFrameworkCore.Tools
 			- Microsoft.EntityFrameworkCore.Relational
 	- Apply the [Authorize] Attribute on the controller class 
+
+	- Policy Based Authorization
+		- DEfine a group of role under a policy for defining Access Rights
+		- PolicyBuilder class
+			- Parameter to AddAuthrization() service 

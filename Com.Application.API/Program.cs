@@ -32,6 +32,25 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     // Use the EF to Perform Read/Write OPerations for Users and Roles
     .AddEntityFrameworkStores<SrkSecurityDbContext>();
 
+// Define Authorizatio Policies
+
+builder.Services.AddAuthorization(options => 
+{
+    options.AddPolicy("ReadPolicy", policy => 
+    {
+        policy.RequireRole("Manager","Clerk","Operator");
+    });
+    options.AddPolicy("WritePolicy", policy =>
+    {
+        policy.RequireRole("Manager", "Clerk");
+    });
+    options.AddPolicy("DeletePolicy", policy =>
+    {
+        policy.RequireRole("Manager");
+    });
+});
+
+
 
 
 // Add CORS Service

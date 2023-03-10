@@ -22,7 +22,7 @@ namespace Com.Application.API.Service
         public async Task<AppResponse> RegisterNewUserAsync(RegisterUser user)
         { 
             AppResponse response = new AppResponse();
-
+            
             if (user == null)
             {
                 response.ResponseMessage = "User Information is Missing";
