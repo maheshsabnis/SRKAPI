@@ -476,3 +476,32 @@ builder.Services.AddControllers()
 		- DEfine a group of role under a policy for defining Access Rights
 		- PolicyBuilder class
 			- Parameter to AddAuthrization() service 
+- USing Tokens
+	- Microsoft.IdentityModel.Tokens
+		- Defining Token aka Token Description
+		- Helps to Set Claims in Token
+			- ClaimIdentity class
+				- List of Claim
+	- Microsoft.AspNetCore.Authentication.JwtBearer
+		- Token Verification
+		- Check the token for following
+			- Issuer
+			- Audience
+			- Expiry
+			- Signeture
+
+# TEsting
+- UNit Testing	
+	- nUnit
+	- xUnit
+	- MsTest
+
+- Unit Testing Testing with Mock
+
+- Sections for Unit Test
+	- Arrange
+		- Collecting the Prerequisites to Test the Code
+	- Act
+		- Actual Perform Operations
+	- Assert
+		- Test Evaluations agains the Need

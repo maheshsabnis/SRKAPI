@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Com.Application.DataAccess": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50420;http://localhost:50421"
+    }
+  }
+}

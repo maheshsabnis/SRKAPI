@@ -22,6 +22,7 @@ namespace Com.Application.Services
         async Task<Department> IDbAccess<Department, int>.CreateAsync(Department entity)
         {
             var result = await ctx.Departments.AddAsync(entity);
+            
             await ctx.SaveChangesAsync();
             return result.Entity;
         }
